@@ -1,81 +1,265 @@
 body {
-  background: linear-gradient(to top, #e0f7fa 0%, #ffffff 100%);
   margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to top, #f0e5f3, #a9c8e3);
+  overflow: hidden;
   height: 100vh;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  position: relative;
 }
 
 .garden {
+  position: absolute;
+  bottom: 10%;
   display: flex;
-  gap: 40px;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  align-items: flex-end;
 }
 
+/* Flower Common Style */
 .flower {
   position: relative;
-  width: 6px;
-  height: 120px;
-  background-color: #4CAF50;
-  border-radius: 3px;
-  animation: sway 4s ease-in-out infinite;
-  transform-origin: bottom center;
+  margin: 0 20px;
+  animation: fadeIn 3s ease-out forwards;
 }
 
-.head {
+/* Sunflower Style */
+.sunflower .head {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #f6b93b 0%, #f39c12 100%);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  animation: bloom 4s ease-out forwards;
+}
+
+.sunflower .head::before,
+.sunflower .head::after {
+  content: "";
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) scale(0.2);
-  opacity: 0;
-  animation: bloom 2s ease-out forwards;
-}
-
-.lavender .head {
-  width: 20px;
-  height: 20px;
-  background-color: #b89bc2;
-  border-radius: 50%;
-  box-shadow:
-    0 -15px #b89bc2,
-    0 -30px #a57fc4,
-    0 -45px #8c5fb2,
-    0 -60px #6b5b95;
-}
-
-.rose .head {
   width: 40px;
-  height: 40px;
-  background: radial-gradient(circle at 10px 10px, #f8bbd0, #ec407a);
+  height: 80px;
+  background: #f39c12;
   border-radius: 50%;
-  box-shadow:
-    5px -10px #f48fb1,
-    -5px -10px #f06292;
+  top: -40px;
+  left: 50%;
+  transform-origin: 50% 100%;
+  animation: petalBloom 4s ease-out forwards;
 }
 
+.sunflower .head::before {
+  transform: rotate(45deg);
+  left: -50px;
+}
+
+.sunflower .head::after {
+  transform: rotate(-45deg);
+  left: 10px;
+}
+
+/* Lavender Style */
+.lavender .head {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e3d5ff, #bfa6ff);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  animation: bloom 4s ease-out forwards;
+}
+
+.lavender .head::before,
+.lavender .head::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: #bfa6ff;
+  border-radius: 50%;
+  top: -30px;
+  left: 50%;
+  transform-origin: 50% 100%;
+  animation: petalBloom 4s ease-out forwards;
+}
+
+.lavender .head::before {
+  transform: rotate(45deg);
+  left: -35px;
+}
+
+.lavender .head::after {
+  transform: rotate(-45deg);
+  left: 5px;
+}
+
+/* Rose Style */
+.rose .head {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #ffb3d9 0%, #ff6699 100%);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  animation: bloom 4s ease-out forwards;
+}
+
+.rose .head::before,
+.rose .head::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 70px;
+  background: #ff6699;
+  border-radius: 50%;
+  top: -35px;
+  left: 50%;
+  transform-origin: 50% 100%;
+  animation: petalBloom 4s ease-out forwards;
+}
+
+.rose .head::before {
+  transform: rotate(45deg);
+  left: -40px;
+}
+
+.rose .head::after {
+  transform: rotate(-45deg);
+  left: 5px;
+}
+
+/* Peony Style */
 .peony .head {
-  width: 45px;
-  height: 45px;
-  background: radial-gradient(circle, #fce4ec, #f8bbd0);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #f9e1d2 0%, #ec88c3 100%);
   border-radius: 50%;
-  box-shadow:
-    0 -10px #f8bbd0,
-    10px -10px #f48fb1,
-    -10px -10px #f48fb1;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  animation: bloom 4s ease-out forwards;
 }
 
-@keyframes sway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(4deg); }
+.peony .head::before,
+.peony .head::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background: #ec88c3;
+  border-radius: 50%;
+  top: -40px;
+  left: 50%;
+  transform-origin: 50% 100%;
+  animation: petalBloom 4s ease-out forwards;
+}
+
+.peony .head::before {
+  transform: rotate(45deg);
+  left: -45px;
+}
+
+.peony .head::after {
+  transform: rotate(-45deg);
+  left: 5px;
+}
+
+/* Message Styling */
+.message {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: #ff66b2;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeInMessage 2s ease-out 1s forwards;
 }
 
 @keyframes bloom {
-  to {
-    transform: translateX(-50%) scale(1);
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
     opacity: 1;
   }
 }
+
+@keyframes petalBloom {
+  0% {
+    transform: rotate(45deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInMessage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Cloud Animation */
+.cloud {
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  top: 30%;
+  animation: moveClouds 20s linear infinite;
+}
+
+.cloud:before,
+.cloud:after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.cloud:before {
+  width: 120px;
+  height: 80px;
+  left: 20px;
+  top: 30%;
+}
+
+.cloud:after {
+  width: 100px;
+  height: 60px;
+  right: 30px;
+  top: 20%;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
