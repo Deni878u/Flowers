@@ -1,80 +1,29 @@
-/* Background and general layout */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to top, #f0e5f3, #a9c8e3); /* Soft pastel background */
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Align flowers at the bottom */
-}
-
-.garden {
-  display: flex;
-  justify-content: center;
-  gap: 50px; /* Space between flower vases */
-  align-items: flex-end;
-}
-
-/* Flower container */
 .flower {
   position: relative;
   width: 120px;
-  animation: fadeIn 3s ease-out forwards;
+  cursor: pointer;
+  margin: 20px;
 }
 
-/* Flower heads */
-.sunflower .head, .lavender .head, .rose .head, .peony .head {
+.flower .head {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: #f39c12; /* Default color for sunflower */
+  background: #f39c12;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  animation: bloom 4s ease-out forwards;
-}
-
-/* Specific flower colors */
-.sunflower .head {
-  background: radial-gradient(circle, #f6b93b 0%, #f39c12 100%);
-}
-.lavender .head {
-  background: linear-gradient(135deg, #bfa6ff, #a28dff);
-}
-.rose .head {
-  background: radial-gradient(circle, #ffb3d9 0%, #ff6699 100%);
-}
-.peony .head {
-  background: radial-gradient(circle, #f9e1d2 0%, #ec88c3 100%);
-}
-
-/* Flower stems */
-.flower .stem {
   position: absolute;
-  bottom: -50px;
-  width: 8px;
-  height: 200px;
-  background: #6a4e23;
-  border-radius: 4px;
-  animation: stemGrow 2s ease-out forwards;
+  top: 0;
+  left: 10px;
+  transition: background 0.3s ease-in-out;
 }
 
-/* Vases */
-.flower .vase {
-  position: absolute;
-  bottom: -30px;
-  width: 80px;
-  height: 40px;
-  background: #9b8b6e;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.flower.bloom .head {
+  animation: bloom 2s ease-out forwards;
 }
 
-/* Animation for flower bloom */
 @keyframes bloom {
   0% {
-    transform: scale(0);
+    transform: scale(0.5);
     opacity: 0;
   }
   100% {
@@ -83,22 +32,22 @@ body {
   }
 }
 
-/* Animation for stem growth */
-@keyframes stemGrow {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 200px;
-  }
+.flower .stem {
+  width: 10px;
+  height: 80px;
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Animation for the garden fade-in */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.flower .vase {
+  width: 60px;
+  height: 30px;
+  background-color: #8e7c3d;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
