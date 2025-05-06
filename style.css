@@ -1,85 +1,81 @@
 body {
-    background: linear-gradient(to top, #e0f7fa 0%, #ffffff 100%);
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    font-family: sans-serif;
+  background: linear-gradient(to top, #e0f7fa 0%, #ffffff 100%);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.garden {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flower {
+  position: relative;
+  width: 6px;
+  height: 120px;
+  background-color: #4CAF50;
+  border-radius: 3px;
+  animation: sway 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.head {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.2);
+  opacity: 0;
+  animation: bloom 2s ease-out forwards;
+}
+
+.lavender .head {
+  width: 20px;
+  height: 20px;
+  background-color: #b89bc2;
+  border-radius: 50%;
+  box-shadow:
+    0 -15px #b89bc2,
+    0 -30px #a57fc4,
+    0 -45px #8c5fb2,
+    0 -60px #6b5b95;
+}
+
+.rose .head {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 10px 10px, #f8bbd0, #ec407a);
+  border-radius: 50%;
+  box-shadow:
+    5px -10px #f48fb1,
+    -5px -10px #f06292;
+}
+
+.peony .head {
+  width: 45px;
+  height: 45px;
+  background: radial-gradient(circle, #fce4ec, #f8bbd0);
+  border-radius: 50%;
+  box-shadow:
+    0 -10px #f8bbd0,
+    10px -10px #f48fb1,
+    -10px -10px #f48fb1;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes bloom {
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
   }
-  
-  .garden {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .flower {
-    position: relative;
-    width: 6px;
-    height: 120px;
-    background-color: #4CAF50; /* stem */
-    border-radius: 3px;
-    animation: sway 4s ease-in-out infinite;
-    transform-origin: bottom center;
-  }
-  
-  /* Lavender head */
-  .flower.lavender::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background-color: #b89bc2;
-    border-radius: 50%;
-    box-shadow:
-      0 -15px #b89bc2,
-      0 -30px #a57fc4,
-      0 -45px #8c5fb2,
-      0 -60px #6b5b95;
-  }
-  
-  /* Rose head */
-  .flower.rose::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle at 10px 10px, #f8bbd0, #ec407a);
-    border-radius: 50%;
-    box-shadow:
-      5px -10px #f48fb1,
-      -5px -10px #f06292;
-  }
-  
-  /* Peony head */
-  .flower.peony::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 45px;
-    height: 45px;
-    background: radial-gradient(circle at center, #fce4ec 0%, #f8bbd0 100%);
-    border-radius: 50%;
-    box-shadow:
-      0 -10px #f8bbd0,
-      10px -10px #f48fb1,
-      -10px -10px #f48fb1;
-  }
-  
-  @keyframes sway {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(4deg); }
-  }
-  
+}
