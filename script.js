@@ -1,6 +1,3 @@
-window.onload = () => {
-    setTimeout(() => {
-        document.body.classList.remove("not-loaded");
-    }, 1000);
+onload = () =>{
+        document.body.classList.remove("container");
 };
-
