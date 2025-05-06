@@ -1,53 +1,182 @@
-.flower {
-  position: relative;
-  width: 120px;
-  cursor: pointer;
-  margin: 20px;
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.flower .head {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #f39c12;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
+:root {
+  --dark-color: #000;
+  --lavender-color: #b57edc; /* Lavender color */
+  --stem-color: #7c4d9f; /* Lavender stem color */
+}
+
+body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden;
+  perspective: 1000px;
+  padding: 50px 0;
+}
+
+.night {
+  position: fixed;
+  left: 50%;
   top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1vmin);
+}
+
+.flowers {
+  position: relative;
+  transform: scale(0.9);
+}
+
+.flower {
+  position: absolute;
+  bottom: 10vmin;
+  transform-origin: bottom center;
+  z-index: 10;
+  --fl-speed: 0.8s;
+}
+
+.flower--1 {
+  animation: moving-flower-1 4s linear infinite;
+}
+
+.flower--1 .flower__line {
+  height: 70vmin;
+  width: 4px;
+  background-color: var(--stem-color);
+  animation-delay: 0.3s;
+}
+
+.flower--1 .flower__line .flower__lavender--1,
+.flower--1 .flower__line .flower__lavender--2,
+.flower--1 .flower__line .flower__lavender--3,
+.flower--1 .flower__line .flower__lavender--4,
+.flower--1 .flower__line .flower__lavender--5,
+.flower--1 .flower__line .flower__lavender--6 {
+  width: 12px;
+  height: 20px;
+  background-color: var(--lavender-color);
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  animation: blooming-lavender var(--fl-speed) infinite;
+}
+
+.flower--1 .flower__line .flower__lavender--1 {
   left: 10px;
-  transition: background 0.3s ease-in-out;
+  animation-delay: 1s;
 }
 
-.flower.bloom .head {
-  animation: bloom 2s ease-out forwards;
+.flower--1 .flower__line .flower__lavender--2 {
+  left: -10px;
+  animation-delay: 1.2s;
 }
 
-@keyframes bloom {
+.flower--1 .flower__line .flower__lavender--3 {
+  left: 20px;
+  animation-delay: 1.4s;
+}
+
+.flower--1 .flower__line .flower__lavender--4 {
+  left: -20px;
+  animation-delay: 1.6s;
+}
+
+.flower--1 .flower__line .flower__lavender--5 {
+  left: 30px;
+  animation-delay: 1.8s;
+}
+
+.flower--1 .flower__line .flower__lavender--6 {
+  left: -30px;
+  animation-delay: 2s;
+}
+
+.flower--2 {
+  left: 50%;
+  transform: rotate(20deg);
+  animation: moving-flower-2 4s linear infinite;
+}
+
+.flower--2 .flower__line {
+  height: 60vmin;
+  width: 4px;
+  background-color: var(--stem-color);
+  animation-delay: 0.6s;
+}
+
+.flower--2 .flower__line .flower__lavender--1,
+.flower--2 .flower__line .flower__lavender--2,
+.flower--2 .flower__line .flower__lavender--3,
+.flower--2 .flower__line .flower__lavender--4 {
+  width: 12px;
+  height: 20px;
+  background-color: var(--lavender-color);
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  animation: blooming-lavender var(--fl-speed) infinite;
+}
+
+.flower--2 .flower__line .flower__lavender--1 {
+  left: 10px;
+  animation-delay: 1.9s;
+}
+
+.flower--2 .flower__line .flower__lavender--2 {
+  left: -10px;
+  animation-delay: 1.7s;
+}
+
+.flower--2 .flower__line .flower__lavender--3 {
+  left: 20px;
+  animation-delay: 1.5s;
+}
+
+.flower--2 .flower__line .flower__lavender--4 {
+  left: -20px;
+  animation-delay: 1.3s;
+}
+
+@keyframes blooming-lavender {
   0% {
-    transform: scale(0.5);
     opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
-    opacity: 1;
+    opacity: 0;
+    transform: scale(0);
   }
 }
 
-.flower .stem {
-  width: 10px;
-  height: 80px;
-  background-color: green;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+@keyframes moving-flower-1 {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px);
+  }
 }
 
-.flower .vase {
-  width: 60px;
-  height: 30px;
-  background-color: #8e7c3d;
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
+@keyframes moving-flower-2 {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(-100px);
+  }
 }
